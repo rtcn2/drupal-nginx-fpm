@@ -23,6 +23,13 @@ ENV PHP_CONF_DIR $PHP_HOME"/cli"
 ENV PHP_CONF_FILE $PHP_CONF_DIR"/php.ini" 
 
 # ====================
+# install simplesamphp
+# ====================
+RUN apt update \
+   && apt install simplesamlphp wget \
+   && apt clean
+
+# ====================
 # Download and Install
 # ~. essentials
 # 1. Drupal
@@ -36,6 +43,9 @@ WORKDIR $DOCKER_BUILD_HOME
 # -------------
 RUN  mkdir -p $DRUPAL_SOURCE 
 COPY drupal.tar.gz $DRUPAL_SOURCE/
+
+WORKDIR $DRUPAL_SOURCE
+RUN wget https://ftp.drupal.org/files/projects/simplesamlphp_auth-8.x-3.0.tar.gz
 
 # =========
 # Configure

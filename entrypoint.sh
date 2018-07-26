@@ -49,6 +49,7 @@ setup_drupal(){
     # tar drupal
     cd $DRUPAL_SOURCE 
     tar -xf drupal.tar.gz -C $DRUPAL_HOME/ --strip-components=1 
+    tar -xf simplesamlphp_auth-8.x-3.0.tar.gz -C $DRUPAL_HOME/modules
     chmod a+w "$DRUPAL_HOME/sites/default" 
     mkdir -p "$DRUPAL_HOME/sites/default/files"
     chmod a+w "$DRUPAL_HOME/sites/default/files"
